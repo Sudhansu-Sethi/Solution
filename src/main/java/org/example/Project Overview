@@ -1,0 +1,79 @@
+Project Overview:
+
+W-SO:
+
+W-SO stands for Wave-Suite Optimizer.
+
+It's a telecome project,used for optimization of Optical fiber newtwork.
+
+When data tranfered from one place to another place through optical fibers , there are chances of loss of data in between.
+
+W-so application optimize the data and show to the user that the optical fibers contain how much data , howmuch is lost and howmuch can be retrievable .
+
+There will be data retrievable options for user to select.
+
+User can select the appropriate option based on their requirements.
+
+These details we get from the NEs(Network Element).
+
+Nes are placed on each end of all the stations where the data is tranfering .
+
+All the  data is there in NE in a segregation format. We use some algorithm to get lost and retrievable data from the NE data.
+
+
+
+Key Stakeholders:
+
+Java Developers, Frontend Developers, DevOps Engineers, Architect, Test Engineers.
+
+
+
+Role:
+
+Backend Develper
+
+Implemented code using Java.
+
+Created Rest Apis.
+
+Implemented the services for the entities in predicts database using Hibernate.
+
+Exposed all the services using spring boot web services based on REST web services.
+
+
+
+Technical Details:
+
+Java, Spring Boot, Hibernate, Rest Apis, JWT, Oauth2, Jenkins ,Maven
+
+
+
+Challenges & Solutions:
+
+We had used scheduler to run the channel optimization (optimization of optical fibers) Api at night.Earlier we had less channels so response was coming fine.Later on when channel count increased for more test cases, we faced an issue of getting response as timeout.
+
+
+
+Root Cause:
+
+We found the root cause that there was retrieving data of each channel in loop and we were end up getting late response due to multiple DB hit by the loop for each and every channels.
+
+
+
+Solution:
+
+As a solution we fetched all the required channels data in one DB hit and stored it in a map and fetched the data from the map instead of each and every time from the DB.
+
+
+
+2.We had application deployed in the Linux server.After installing the application.When we launch the application in 3-4 secs ,application getting crashed.
+
+
+
+Root Cause: We checked the catalina.out log, found that no space left . After debugging we found, every time we launch the application one of the log file size is getting increased to 30-40 gb in 1-2 secs. That was casing the issue.
+
+
+
+Solution:
+
+From code someone had enabled the log ,forgot to disable and pushed the changes to git. Disabled the log and it worked fine.
