@@ -43,11 +43,18 @@ public class AverageMark {
             }
         }
 
+        double studentAvgMarks = Integer.MIN_VALUE;
+        String studentName = "";
         for (Map.Entry<String,ArrayList<Integer>> m:marks.entrySet()){
             String name = m.getKey();
              double averageMark = (double)m.getValue().get(0)/m.getValue().get(1);
-            System.out.println(name+":"+averageMark);
+            if (averageMark > studentAvgMarks) {
+                studentAvgMarks = averageMark;
+                studentName = m.getKey();
+            }
+
         }
+        System.out.println(studentName+":"+studentAvgMarks);
 
     }
 
